@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+body {
+    background-color: #FFFFFF;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 2 1'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='0' x2='0' y1='0' y2='1' gradientTransform='rotate(0,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%23FFFFFF'/%3E%3Cstop offset='1' stop-color='%23DBE7DF'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='0' y2='1' gradientTransform='rotate(0,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%23FFFFFF' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23FFFFFF' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='c' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='2' y2='2' gradientTransform='rotate(0,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%23FFFFFF' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23FFFFFF' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='0' y='0' fill='url(%23a)' width='2' height='1'/%3E%3Cg %3E%3Cpolygon fill='url(%23b)' points='0 1 0 0 2 0'/%3E%3Cpolygon fill='url(%23c)' points='2 1 2 0 0 0'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+    /* background by SVGBackgrounds.com */
+}
+.main-div {
+    position: absolute;
+    top: 370px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+img{
+    position: absolute;
+    opacity: 1;
+    top: 30px;
+    left: 50%;
+    height: 80px;
+    transform: translate(-50%, 0);
+}
+
+.main-div p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+color: #3f4949;
+font-size: 23px;
+margin-bottom: 10px;
+}
+.main-div input {
+font-size: 20px;
+padding-top: 12px;
+padding-bottom: 8px;
+padding-left: 20px;
+padding-right: 20px;
+border-radius: 10px;
+border: solid;
+margin-bottom: 30px;
+background-color: rgb(250, 250, 250);
+border-color: rgba(59, 59, 59, 0.089);
+outline: none;
+color: #292929;
+transition: 0.3s;
+}
+.main-div button {
+margin-top: 25px;
+width: 100%;
+font-size: 20px;
+height: 45px;
+font-family: "Ubuntu", sans-serif;
+letter-spacing: 5px;
+border-radius: 5px;
+border: none;
+background-image: linear-gradient(90deg, #3ed17b, #76dd76);
+color: #282828;
+cursor: pointer;
+transition: 0.2s;
+margin-bottom: 15px;
+}
+.main-div button:hover {
+transition: 0.2s;
+color: #ffffff;
+}
+.main-div input:focus {
+transition: 0.3s;
+border-color: #3ed15e;
+border-radius: 5px;
+}
+.main-div a {
+color: #3b3b3b50;
+text-decoration: none;
+transition: 0.2s;
+font-family: "Ubuntu", sans-serif;
+font-size: 15px;
+}
+.main-div a:hover {
+color: #3ed15e;
+transition: 0.2s;
+}
+.forgot {
+text-align: right;
+}
+.tenho {
+margin-bottom: 30px;
+}
+.aviso {
+margin-top: -22px;
+color: #ff3a3ae0;
+text-decoration: none;
+transition: 0.2s;
+font-family: "Ubuntu", sans-serif;
+font-size: 16px;
+text-align: center;
+font-weight: bold;
+}
+.hidden {
+display: none;
+}

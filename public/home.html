@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intell Cloud⚡</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="icon" href="/img/favicon.ico" type="image/ico">
+    <link rel="stylesheet" type="text/css" href="css/default.css">
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+</head>
+<body>
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="/">
+                        <span class="icon"></span>
+                        <span class="title"><h2>Intell - TCC</h2></span>
+      
+                    </a>
+                </li>
+                <li>
+                    <a href="/home">
+                        <span class="icon"><i class="fa fa-signal" aria-hidden="true"></i></span>
+                        <span class="title">Home</span>
+      
+                    </a>
+                </li>
+                <li>
+                    <a href="/account">
+                        <span class="icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                        <span class="title">Conta</span>
+      
+                    </a>
+                </li>
+                <li>
+                    <a href="/devices">
+                        <span class="icon"><i class="fa fa-bolt" aria-hidden="true"></i></span>
+                        <span class="title">Dispositivos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/settings">
+                        <span class="icon"><i class="fa fa-cog" aria-hidden="true"></i></span>
+                        <span class="title">Configurações</span>
+      
+                    </a>
+                </li>
+                <li>
+                    <a href="/help">
+                        <span class="icon"><i class="fa fa-question" aria-hidden="true"></i></span>
+                        <span class="title">Ajuda</span>
+      
+                    </a>
+                </li>
+                <li>
+                    <a onclick="window.localStorage.setItem('token', '');window.location = '/login'">
+                        <span class="icon"><i class="fa fa-window-close" aria-hidden="true"></i></span>
+                        <span class="title">Sair</span>
+      
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle" onclick="let toggle = document.querySelector('.toggle');
+                let navigation = document.querySelector('.navigation');
+                let main = document.querySelector('.main');
+                toggle.classList.toggle('active');
+                navigation.classList.toggle('active');
+                main.classList.toggle('active');"></div>
+                <div class="name">
+                    <h1 id="nameheader"></h1>
+                </div>
+                <div id="colors">
+                    <button class='bc' color="blue" style="background: #03a9f4;"></button>
+                    <button class='bc' color="pink" style="background: #de5d83;"></button>
+                    <button class='bc' color="cyan" style="background: #3ed1c2;"></button>
+                </div>
+            </div>
+            <div class="cardBox hidden" id="cards">
+                <div class="card" id="greater">
+                    <div>
+                        <div class="numbers">0W</div>
+                        <div class="cardName">Maior Valor</div>
+                    </div>
+                    <div class="iconBox">
+                        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="card" id="lower">
+                    <div>
+                        <div class="numbers">0W</div>
+                        <div class="cardName">Menor Valor</div>
+                    </div>
+                    <div class="iconBox">
+                        <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="card" id="average">
+                    <div>
+                        <div class="numbers">0W</div>
+                        <div class="cardName">Valor Medio</div>
+                    </div>
+                    <div class="iconBox">
+                        <i class="fa fa-signal" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="card" id="current">
+                    <div>
+                        <div class="numbers">0W</div>
+                        <div class="cardName">Consumo/Mês</div>
+                    </div>
+                    <div class="iconBox">
+                        <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="loading" id="load">
+                <div class="loading-icon"></div>
+                <h1>Carregando</h1>
+            </div>
+            <div class="error hidden" id="error">
+                <div class="error-icon"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></div>
+                <h1>Erro ao carregar! Tente recarregar a pagina.</h1>
+            </div>
+            <div class="details hidden" id="detail">
+                <div class="graphSpott">
+                    <canvas id="line-chart-pc" class="hidden"width="20" height="10"></canvas>
+                    <canvas id="line-chart-mobile" class="hidden" width="10" height="7"></canvas>
+                    <button class='clear trash' onclick="{let opt = $('.clear.options');opt[0].classList.remove('hidden');opt[1].classList.remove('hidden');$('.clear.trash')[0].classList.add('hidden')}"><i class="fa fa-trash" aria-hidden="true" ></i> Limpar dados</button>
+                    <button class='clear options hidden' onclick="{let opt = $('.clear.options');opt[0].classList.add('hidden');opt[1].classList.add('hidden');$('.clear.trash')[0].classList.remove('hidden')}" >Cancelar</button>
+                    <button class='clear options hidden' id='limpar'>Limpar</button>
+                </div>
+                <div class="devicesSpott">
+                    <div class="cardHeader">
+                        <h2>Dispositivos</h2>
+                    </div>
+                    <table id='table-devices'>
+                    </table>
+                </div>
+                <button id="togglegraph"><i class="fa fa-signal" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/default.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intell Cloud⚡</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+    />
+    <link rel="icon" href="/img/favicon.ico" type="image/ico">
+    <link rel="stylesheet" type="text/css" href="css/default.css" />
+    <link rel="stylesheet" type="text/css" href="css/devices.css" />
+  </head>
+  <body>
+    <div class="delete hidden">
+      <div class="content">
+        <h2>Excluir dispositivo?</h2>
+        <i class="fa fa-trash" aria-hidden="true"></i>
+        <i
+          class="fa fa-plus"
+          aria-hidden="true"
+          onclick="$('.delete')[0].classList.add('hidden');"
+        ></i>
+        <button
+          id="btn-sim"
+          onclick="deleteDevice($('.delete')[0].getAttribute('key')).catch(err => {console.log(err);setErrorPage()})"
+        >
+          Sim
+        </button>
+      </div>
+    </div>
+    <div class="rename hidden">
+      <div class="content">
+        <h2>Renomear dispositivo</h2>
+        <div class="input">
+          <input type="text" id="rename-input" placeholder="Nome" />
+        </div>
+        <i
+          class="fa fa-plus"
+          aria-hidden="true"
+          onclick="$('.rename')[0].classList.add('hidden')"
+        ></i>
+        <p id="error-rename"></p>
+        <button
+          id="btn-salvar"
+          onclick="renameDevice($('.rename')[0].getAttribute('key')).catch(err => {console.log(err);setErrorPage()})"
+        >
+          salvar
+        </button>
+      </div>
+    </div>
+    <div class="addscreen hidden">
+      <div class="content">
+        <h2>Adicionar dispositivo</h2>
+        <div class="input">
+          <input type="text" id="add-key" placeholder="Key" />
+
+          <input type="text" id="add-name" placeholder="Nome(opcional)" />
+          <p class="inesistente" style="margin-top: 10px; color: rgb(255, 52, 52); font-weight: 700;"></p>
+        </div>
+        <i
+          class="fa fa-plus"
+          aria-hidden="true"
+          onclick="$('.addscreen')[0].classList.add('hidden')"
+        ></i>
+        <button
+          id="btn-add"
+          onclick="addDevice($('#add-key')[0].value, $('#add-name')[0].value).catch(err => {setErrorPage()})"
+        >
+          adicionar
+        </button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="navigation">
+        <ul>
+          <li>
+            <a href="/">
+              <span class="icon"></span>
+              <span class="title"><h2>Intell - TCC</h2></span>
+            </a>
+          </li>
+          <li>
+            <a href="/home">
+              <span class="icon"
+                ><i class="fa fa-signal" aria-hidden="true"></i
+              ></span>
+              <span class="title">Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="/account">
+              <span class="icon"
+                ><i class="fa fa-user" aria-hidden="true"></i
+              ></span>
+              <span class="title">Conta</span>
+            </a>
+          </li>
+          <li>
+            <a href="/devices">
+              <span class="icon"
+                ><i class="fa fa-bolt" aria-hidden="true"></i
+              ></span>
+              <span class="title">Dispositivos</span>
+            </a>
+          </li>
+          <li>
+            <a href="/settings">
+              <span class="icon"
+                ><i class="fa fa-cog" aria-hidden="true"></i
+              ></span>
+              <span class="title">Configurações</span>
+            </a>
+          </li>
+          <li>
+            <a href="/help">
+              <span class="icon"
+                ><i class="fa fa-question" aria-hidden="true"></i
+              ></span>
+              <span class="title">Ajuda</span>
+            </a>
+          </li>
+          <li>
+            <a onclick="window.localStorage.setItem('token', '');window.location = '/login'">
+              <span class="icon"><i class="fa fa-window-close" aria-hidden="true"></i></span>
+              <span class="title">Sair</span>
+
+          </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="main">
+        <div class="topbar">
+          <div
+            class="toggle"
+            onclick="let toggle = document.querySelector('.toggle');
+                let navigation = document.querySelector('.navigation');
+                let main = document.querySelector('.main');
+                toggle.classList.toggle('active');
+                navigation.classList.toggle('active');
+                main.classList.toggle('active');"
+          ></div>
+          <div class="name">
+            <h1>Dispositivos</h1>
+          </div>
+          <div id="colors">
+            <button
+              class="bc"
+              color="blue"
+              style="background: #03a9f4"
+            ></button>
+            <button
+              class="bc"
+              color="pink"
+              style="background: #de5d83"
+            ></button>
+            <button
+              class="bc"
+              color="cyan"
+              style="background: #3ed1c2"
+            ></button>
+          </div>
+        </div>
+        <div class="loading" id="load">
+          <div class="loading-icon"></div>
+          <h1>Carregando</h1>
+        </div>
+        <div class="error hidden" id="error">
+          <div class="error-icon">
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          </div>
+          <h1>Houve algum erro! Tente recarregar a pagina.</h1>
+        </div>
+        <button class="add" onclick="let del = $('.addscreen')[0];
+        del.classList.remove('hidden');
+        del.style.animation = 'fadein .16s normal forwards ease-in-out';">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+        <div class="devices hidden"></div>
+      </div>
+    </div>
+    <script src="js/default.js"></script>
+    <script src="js/devices.js"></script>
+  </body>
+</html>
+<!-- <i class="fa fa-trash" aria-hidden="true"></i>
+                    <i class="fa fa-wrench" aria-hidden="true"></i>
+                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                    <i class="fa fa-plus" aria-hidden="true"></i> -->

@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+:root{
+    --theme-main: #03a9f4;
+    --theme-sec: #38c0ff;
+    --theme-nav: #005075;
+    --theme-back: rgb(234, 234, 238);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    overflow-x: hidden;
+}
+.hidden{
+    display: none!important;
+}
+.loading-icon{
+    animation: is-rotating 1s infinite;
+    border: 10px solid #c9c9c9;
+    border-radius: 50%;
+    border-top-color: var(--theme-main);
+    height: 100px;
+    width: 100px;
+    margin-left: 40px;
+  }
+  
+  @keyframes is-rotating {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+.loading{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.error{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.error-icon{
+    font-size: 100px;
+    color: rgb(255, 153, 0);
+}
+.container{
+    position: relative;
+    width: 100%;
+}
+.navigation{
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--theme-nav);
+    transition: 0.5s;
+    overflow: hidden;
+}
+.navigation.active{
+    width: 60px;
+}
+.navigation ul{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.navigation ul li{
+    position: relative;
+    width: 100%;
+    list-style: none;
+}
+.navigation ul li:hover{
+    transition: .3s;
+    background-color: var(--theme-main);
+}
+.navigation ul li:nth-child(1){
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.navigation ul li:nth-child(1):hover{
+    background: transparent;
+}
+.navigation ul li a{
+    position: relative;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: #fff
+}
+.navigation ul li a .icon
+{
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+.navigation ul li a .icon .fa{
+    color: #fff;
+    font-size: 24px;
+
+}
+.navigation ul li a .title{
+   position: relative;
+   display: block;
+   padding: 0 10px;
+   height: 60px;
+   line-height: 60px; 
+   white-space: nowrap;
+}
+.main{
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background: rgb(234, 234, 238);
+    transition: 0.5s;
+}
+.main.active{
+    width: calc(100% - 60px);
+    left: 60px;
+}
+.main .topbar{
+    width: 100%;
+    background: white;
+    height: 60px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+}
+.toggle{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+} 
+.toggle::before{
+    content: '\f0c9';
+    font-family: 'Font Awesome\ 5 Free';
+    font-weight: 900;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    line-height: 60px;
+    font-size: 24px;    
+    text-align: center;
+    color: #111;
+}
+.name{
+    color: rgb(22, 22, 22); 
+    font-size: 15px;
+    overflow: hidden;
+    margin-right: 10px;
+}
+#colors button{
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    border: none;
+    border-radius: 7px;
+    box-shadow: 2px 1px 2px 1px #d4d4d4;
+}
+#colors button:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: .2s;
+}
+*::-webkit-scrollbar-track
+{
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar
+{
+	width: 7px;
+	background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar-thumb
+{
+	background-color: var(--theme-main);
+    border-radius: 10px;
+	
+	background-image: -webkit-gradient(linear, 0 0, 0 100%,
+	                   color-stop(.5, rgba(255, 255, 255, .2)),
+					   color-stop(.5, transparent), to(transparent));
+}
+@media (max-width: 992px){
+    .navigation{
+        left: -300px;
+    }
+    .navigation.active{
+        left:0;
+        width: 300px;
+    }
+    .main{
+        width: 100%;
+        left: 0;
+    }
+    .main.active{
+        width: 100%;
+        left: 300px;
+    }
+    .name{
+        font-size: 12px;
+    }
+#colors button{
+        margin-right: 7px;
+    }
+}
