@@ -7,8 +7,8 @@ void writeHost(const String& _host);
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
-  writeConnection(String("TP-LINK_8216"), String("americana"));
-  writeHost(String("http://homewill.ddns.net:53335/"));
+  writeConnection(String("YOUR SSID"), String("YOUR PASSWORD"));
+  writeHost(String("THE SERVER URL"));
 }
 
 void loop() {
