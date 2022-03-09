@@ -1,4 +1,4 @@
-### Meu TCC na ETEC (Projeto I.O.T.)
+### Meu TCC na ETEC (Projeto I.O.T.) Leitor de consumo de eletrodomesticos
 
 # Linguagens:
 
